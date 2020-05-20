@@ -12,8 +12,8 @@
     name: jenkins
     description: Jenkins Yum Repo
     state: present
-    baseurl: http://pkg.jenkins.io/redhat
-    gpgkey: https://pkg.jenkins.io/redhat/jenkins.io.key
+    baseurl: "{{ url }}"
+    gpgkey: "{{ key }}"
     gpgcheck: yes
     enabled: yes
 
