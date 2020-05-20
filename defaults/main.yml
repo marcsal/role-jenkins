@@ -1,4 +1,4 @@
 ---
 # defaults file for role-jenkins
 url: 'http://pkg.jenkins.io/redhat'
-key: https://pkg.jenkins.io/redhat/jenkins.io.key
+key: 'https://pkg.jenkins.io/redhat/jenkins.io.key'
