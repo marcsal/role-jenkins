@@ -1,0 +1,29 @@
+---
+
+- name: Install java
+  yum:
+    name:
+      - java-1.8.0-openjdk-devel
+    update_cache: yes
+    state: present
+
+- name: Jenkins repo
+  yum_repository:
+    name: jenkins
+    description: Jenkins Yum Repo
+    state: present
+    baseurl: http://pkg.jenkins.io/redhat
+    gpgkey: https://pkg.jenkins.io/redhat/jenkins.io.key
+    gpgcheck: yes
+    enabled: yes
+
+- name: Install jenkins
+  yum:
+    name: jenkins
+    update_cache: yes
+    state: present
+
+- name: Ensure jenkins is running
+  service:
+    name: jenkins
+    state: started

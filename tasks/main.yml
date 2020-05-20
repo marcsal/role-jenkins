@@ -1,2 +1,5 @@
 ---
 # tasks file for role-jenkins
+
+- name: Include distro
+  include: "{{ ansible_os_family }}.yml"
