@@ -10,11 +10,15 @@
     - name: Install software
       apt:
         name:
-          - ansible
           - git
           - maven
         update_cache: yes
         state: present
+    
+    - name: Pip install ansible
+      pip:
+        name: ansible
+        executable: pip3.3
 
     - name: Jenkins apt-key
       apt_key:
