@@ -19,8 +19,8 @@
     name: jenkins
     description: Jenkins Yum Repo
     state: present
-    baseurl: "{{ url }}"
-    gpgkey: "{{ key }}"
+    baseurl: "{{ yumurl }}"
+    gpgkey: "{{ yumkey }}"
     gpgcheck: yes
     enabled: yes
 
