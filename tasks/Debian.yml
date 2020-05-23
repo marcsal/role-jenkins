@@ -6,6 +6,15 @@
           - openjdk-11-jre
         update_cache: yes
         state: present
+      when: ansible_distribution_release == "buster"
+
+    - name: Install java
+      apt:
+        name:
+          - "{{ jreversion }}"
+        update_cache: yes
+        state: present
+      when: ansible_distribution_release == "stretch"
 
     - name: Install software
       apt:
