@@ -3,3 +3,4 @@
 
 - name: Include distro
   include: "{{ ansible_os_family }}.yml"
+  tags: all
