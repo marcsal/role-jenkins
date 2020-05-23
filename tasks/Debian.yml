@@ -1,0 +1,39 @@
+---
+- block:
+    - name: Install java
+      apt:
+        name:
+          - openjdk-11-jre
+        update_cache: yes
+        state: present
+
+    - name: Install software
+      apt:
+        name:
+          - ansible
+          - git
+          - maven
+        update_cache: yes
+        state: present
+
+    - name: Jenkins apt-key
+      apt_key:
+        url: "{{ aptkey }}"
+        state: present
+
+    - name: Jenkins repo
+      apt_repository:
+        repo: "{{ apturl }}"
+        state: present
+
+    - name: Install jenkins
+      apt:
+        name: jenkins
+        update_cache: yes
+        state: present
+
+    - name: Ensure jenkins is running
+      service:
+        name: jenkins
+        state: started
+  tags: rbp
