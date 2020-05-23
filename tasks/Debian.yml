@@ -40,4 +40,11 @@
       service:
         name: jenkins
         state: started
+
+    - name: Add user to jenkins group
+      user:
+        name: "{{ user }}"
+        groups: jenkins
+        append: yes 
+  
   tags: rbp
