@@ -18,7 +18,7 @@
     - name: Pip install ansible
       pip:
         name: ansible
-        executable: pip3.3
+        executable: pip3
 
     - name: Jenkins apt-key
       apt_key:
