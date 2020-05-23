@@ -1,5 +1,6 @@
 ---
 # defaults file for role-jenkins
+
 yumurl: 'http://pkg.jenkins.io/redhat'
 yumkey: 'https://pkg.jenkins.io/redhat/jenkins.io.key'
 aptkey: 'https://pkg.jenkins.io/debian/jenkins.io.key'
