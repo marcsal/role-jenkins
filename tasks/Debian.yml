@@ -16,19 +16,6 @@
         state: present
       when: ansible_distribution_release == "stretch"
 
-    - name: Install software
-      apt:
-        name:
-          - git
-          - maven
-        update_cache: yes
-        state: present
-    
-    - name: Pip install ansible
-      pip:
-        name: ansible
-        executable: pip3
-
     - name: Jenkins apt-key
       apt_key:
         url: "{{ aptkey }}"
@@ -54,6 +41,21 @@
       user:
         name: "{{ user }}"
         groups: jenkins
-        append: yes 
+        append: yes
+    
+    - name: Install software
+      apt:
+        name:
+          - git
+          - maven
+        update_cache: yes
+        state: present
+    
+    - name: Pip install ansible
+      pip:
+        name: ansible
+        executable: pip3
+      become: true
+      become_user: jenkins
   
   tags: rbp
