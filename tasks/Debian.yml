@@ -55,8 +55,5 @@
       pip:
         name: ansible
         executable: pip3
-      become: true
-      become_method: sudo
-      become_user: jenkins
   
   tags: rbp
