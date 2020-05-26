@@ -1,0 +1,40 @@
+---
+- block:
+    - name: Install java
+      apt:
+        name:
+          - openjdk-11-jre
+        update_cache: yes
+        state: present
+      when: ansible_distribution_release == "buster"
+
+    - name: Install java
+      apt:
+        name:
+          - openjdk-9-jre
+        update_cache: yes
+        state: present
+      when: ansible_distribution_release == "stretch"
+
+    - name: Jenkins User creation
+      user:
+        name: "jenkins"
+        shell: /bin/bash
+        home: "/var/lib/jenkins"
+        groups: jenkins
+        append: yes
+    
+    - name: Add ssh-key for user
+      authorized_key:
+        user: "jenkins"
+        state: present
+        key: "{{ lookup('file', '{{ item }}') }}"
+      with_items:
+        - "/var/lib/jenkins/.ssh/id_rsa.pub"
+    
+    - name: Add user to jenkins group
+      user:
+        name: "{{ user }}"
+        groups: jenkins
+        append: yes
+  tags: slave
