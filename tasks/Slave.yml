@@ -26,14 +26,11 @@
     
     - name: Add ssh-key for user
       authorized_key:
-        user: "{{ user }}"
+        user: "jenkins"
         state: present
         key: "{{ lookup('file', '{{ item }}') }}"
       with_items:
         - "/var/lib/jenkins/.ssh/id_rsa.pub"
-      become: true
-      become_user: root
-      become_method: sudo
     
     - name: Add user to jenkins group
       user:
